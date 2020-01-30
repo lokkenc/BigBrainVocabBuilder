@@ -1,41 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:columnCount="2"
     android:rowCount="3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gold"
     tools:context=".MainActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:paddingTop="100dp">
+        <ImageButton
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:src="@drawable/review"
+            android:scaleType="fitCenter"
+            android:background="@color/blueish"
+            android:layout_margin="10dp" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:src="@drawable/vocab_img1"
+            android:scaleType="fitCenter"
+            android:background="@color/blueish"
+            android:padding="10dp"
+            android:layout_margin="10dp" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:src="@drawable/test_img"
+            android:scaleType="fitCenter"
+            android:background="@color/blueish"
+            android:padding="10dp"
+            android:layout_margin="10dp" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:src="@drawable/game_time"
+            android:scaleType="fitCenter"
+            android:background="@color/blueish"
+            android:padding="10dp"
+            android:layout_margin="10dp" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:src="@drawable/stats"
+            android:scaleType="fitCenter"
+            android:background="@color/blueish"
+            android:padding="10dp"
+            android:layout_margin="10dp" />
+    </TableRow>
+</TableLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
-</GridLayout>
