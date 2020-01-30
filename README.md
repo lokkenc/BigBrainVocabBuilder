@@ -1,3 +1,6 @@
 # Big Brain Vocab Builder
 
-The best vocab app in town
+Steps to Run App:
+1. From android studio, build the project
+2. Generate apk file
+3. Download and run apk on mobile device
