@@ -9,6 +9,8 @@
     android:background="@color/gold"
     tools:context=".MainActivity">
 
+
+
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -66,5 +68,25 @@
             android:padding="10dp"
             android:layout_margin="10dp" />
     </TableRow>
+
+    <TableRow
+        android:paddingTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:text="@string/login_button_text" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:text="@string/settings_button_text"/>
+    </TableRow>
+
 </TableLayout>
 
