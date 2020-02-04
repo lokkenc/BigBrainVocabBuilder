@@ -19,6 +19,7 @@
         <ImageButton
             android:layout_width="300dp"
             android:layout_height="100dp"
+            android:id="@+id/ReviewButton"
             android:src="@drawable/review"
             android:scaleType="fitCenter"
             android:background="@color/blueish"
@@ -31,6 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_weight="1"
+            android:id="@+id/WordsButton"
             android:src="@drawable/vocab_img1"
             android:scaleType="fitCenter"
             android:background="@color/blueish"
@@ -40,6 +42,7 @@
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_weight="1"
+            android:id="@+id/TestButton"
             android:src="@drawable/test_img"
             android:scaleType="fitCenter"
             android:background="@color/blueish"
@@ -53,6 +56,7 @@
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_weight="1"
+            android:id="@+id/GameTimeButton"
             android:src="@drawable/game_time"
             android:scaleType="fitCenter"
             android:background="@color/blueish"
@@ -62,6 +66,7 @@
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_weight="1"
+            android:id="@+id/StatisticsButton"
             android:src="@drawable/stats"
             android:scaleType="fitCenter"
             android:background="@color/blueish"
@@ -79,12 +84,14 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
+            android:id="@+id/LoginButton"
             android:text="@string/login_button_text" />
         <Button
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
+            android:id="@+id/SettingsButton"
             android:text="@string/settings_button_text"/>
     </TableRow>
 

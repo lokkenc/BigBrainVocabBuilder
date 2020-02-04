@@ -13,5 +13,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+    }
+
+    protected void changeColors(){
+        //find all other buttons on same page as clicked button
+        // reset all their colors
+        // change color of clicked button
     }
 }
