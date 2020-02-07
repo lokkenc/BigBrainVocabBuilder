@@ -28,4 +28,8 @@
 
     <string name="settings_button_text" translatable="false">"Settings"</string>
     <string name="login_button_text" translatable="false">"Log-In/Register"</string>
+    <string name="play_game_crossword" translatable="false">"Log-In/Register"</string>
+    <string name="play_game_word_search" translatable="false">"Log-In/Register"</string>
+    <string name="play_game_word_catch" translatable="false">"Log-In/Register"</string>
+
 </resources>
