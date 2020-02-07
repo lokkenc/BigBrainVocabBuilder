@@ -1,9 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TestActivity">
+    tools:context=".TestActivity"
+    android:orientation="vertical"
+    android:background="@color/gold">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="30dp"
+        android:text="Vocab Word"
+        android:textSize="45sp"
+        android:gravity="center"
+        android:background="@color/blueish"
+        android:textColor="@color/gold"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_margin="30dp"
+        android:padding="20dp"
+        android:background="@color/blueish">
+
+        <RadioButton
+            android:id="@+id/testChoice0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="Definition 0"
+            android:textColor="@color/gold"/>
+
+        <RadioButton
+            android:id="@+id/testChoice1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="Definition 1"
+            android:textColor="@color/gold"/>
+
+        <RadioButton
+            android:id="@+id/testChoice2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="Definition 2"
+            android:textColor="@color/gold"/>
+    </RadioGroup>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:layout_margin="30dp"
+        android:layout_gravity="center"
+        android:background="@color/blueish"
+        android:textColor="@color/gold"
+        android:textSize="25sp"
+        android:text="Submit"/>
+
+</LinearLayout>
