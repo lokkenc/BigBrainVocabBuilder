@@ -39,4 +39,13 @@
     <string name="go_back" translatable="false">"GO BACK"</string>
     <string name="games_completed_label" translatable="false">"Games Completed"</string>
 
+
+
+
+    <!-- Category Strings -->
+    <string name="categoryTitle" translatable="false">Test Category</string>
+    <string name="easy" translatable="false">EASY WORDS</string>
+    <string name="medium" translatable="false">MEDIUM WORDS</string>
+    <string name="hard" translatable="false">HARD WORDS</string>
+
 </resources>
