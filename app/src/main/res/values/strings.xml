@@ -28,8 +28,15 @@
 
     <string name="settings_button_text" translatable="false">"Settings"</string>
     <string name="login_button_text" translatable="false">"Log-In/Register"</string>
-    <string name="play_game_crossword" translatable="false">"Log-In/Register"</string>
-    <string name="play_game_word_search" translatable="false">"Log-In/Register"</string>
-    <string name="play_game_word_catch" translatable="false">"Log-In/Register"</string>
+    <string name="play_game_crossword" translatable="false">"CROSSWORD"</string>
+    <string name="play_game_word_search" translatable="false">"WORD SEARCH"</string>
+    <string name="play_game_word_catch" translatable="false">"WORD CATCH"</string>
+    <string name="stats_label" translatable="false">"Statistics"</string>
+    <string name="words_learned_label" translatable="false">"Words Learned"</string>
+    <string name="time_playing_games_label" translatable="false">"Time Spent Playing Games"</string>
+    <string name="tests_taken_label" translatable="false">"Tests Taken"</string>
+    <string name="time_taking_tests_label" translatable="false">"Time Spent Taking Tests"</string>
+    <string name="go_back" translatable="false">"GO BACK"</string>
+    <string name="games_completed_label" translatable="false">"Games Completed"</string>
 
 </resources>
