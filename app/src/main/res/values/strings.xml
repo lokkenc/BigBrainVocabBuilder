@@ -39,6 +39,13 @@
     <string name="go_back" translatable="false">"GO BACK"</string>
     <string name="games_completed_label" translatable="false">"Games Completed"</string>
 
+    <string name="master_volume" translatable="false">"Master Volume"</string>
+    <string name="music" translatable="false">"Music"</string>
+    <string name="sound_effects" translatable="false">"Sound Effects"</string>
+    <string name="notifications" translatable="false">"Notifications"</string>
+    <string name="vibration" translatable="false">"Vibrations"</string>
+    <string name="settings" translatable="false">"Settings"</string>
+
 
 
 
