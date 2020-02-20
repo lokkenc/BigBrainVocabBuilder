@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -22,11 +23,11 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private static final String WORD = "word";
     private static final String DEFINITION = "definition";
 
-    private Context mainContext = null;
+    private Context thisContext = null;
 
     public DatabaseManager(Context context) {
         super (context, DATABASE_NAME, null, DATABSE_VERSION);
-        mainContext = context;
+        thisContext = context;
     }
 
     public void onCreate(SQLiteDatabase db) {
@@ -34,16 +35,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
         sqlCreate += " integer primary key autoincrement, " + WORD;
         sqlCreate += " text, " + DEFINITION + " text )";
         db.execSQL(sqlCreate);
-
-        if (mainContext != null)
-            loadJSONVocab(mainContext);
-
-        String sqlSelect = "select * from " + TABLE_VOCAB;
-        Cursor cursor = db.rawQuery(sqlSelect, null);
-        while (cursor.moveToNext()) {
-            Log.d("DBLOAD", cursor.getString(1));
+        if (thisContext != null) {
+            loadJSONVocab(thisContext, db);
         }
-        db.close();
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -51,7 +45,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean loadJSONVocab(Context context) {
+    private boolean loadJSONVocab(Context context, SQLiteDatabase db) {
+        Log.d("DB", "Loading vocab json");
         String jsonString = null;
         try {
             InputStream inputStream = context.getAssets().open("vocab_words.json");
@@ -65,27 +60,22 @@ public class DatabaseManager extends SQLiteOpenHelper {
             return false;
         }
 
-        SQLiteDatabase db = this.getWritableDatabase();
-
         try {
             JSONArray json = new JSONArray(jsonString);
             for (int i = 0; i < json.length(); i++) {
                 JSONObject jsonWord = json.getJSONObject(i);
                 String word = jsonWord.getString("word");
                 String def = jsonWord.getString("definition");
-                String sqlInsert = "insert into " + TABLE_VOCAB;
-                sqlInsert += " values(null, '" + word;
-                sqlInsert += "', '" + def + "' )";
-                db.execSQL(sqlInsert);
+                SQLiteStatement insert = db.compileStatement("insert into " + TABLE_VOCAB + " values(null, ?, ?)");
+                insert.bindString(1, word);
+                insert.bindString(2, def);
+                insert.executeInsert();
 
             }
         } catch (JSONException ex) {
             ex.printStackTrace();
-            db.close();
             return false;
         }
-
-        db.close();
         return true;
     }
 
