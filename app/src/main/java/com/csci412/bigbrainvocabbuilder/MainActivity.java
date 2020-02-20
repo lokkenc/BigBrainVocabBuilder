@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,12 +13,15 @@ import com.csci412.bigbrainvocabbuilder.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    private DatabaseManager dbManager = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        DatabaseManager dbManager = new DatabaseManager(this);
-
+        dbManager = new DatabaseManager(this);
+        SQLiteDatabase db = dbManager.getWritableDatabase();
+        db.close();
     }
 
     protected void changeColors(){
