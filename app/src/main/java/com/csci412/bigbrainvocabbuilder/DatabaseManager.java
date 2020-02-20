@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Random;
 
 public class DatabaseManager extends SQLiteOpenHelper {
 
@@ -87,6 +88,28 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         db.close();
         return true;
+    }
+
+    public String getRandomWord() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sqlQuery = "SELECT COUNT(*) FROM " + TABLE_VOCAB;
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+        if (!(cursor.moveToFirst()))
+            return null;
+        int wordCount = cursor.getInt(0);
+        Random rand = new Random();
+        int randomWordIndex = rand.nextInt(wordCount);
+        sqlQuery = "select * from " + TABLE_VOCAB;
+        sqlQuery += " where " + ID + " = " + randomWordIndex;
+        cursor = db.rawQuery(sqlQuery, null);
+        if (!(cursor.moveToFirst()))
+            return null;
+        String randomWord = cursor.getString(1);
+
+        db.close();
+
+        return randomWord;
+
     }
 
 }
