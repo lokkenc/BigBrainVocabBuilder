@@ -37,6 +37,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         sqlCreate += " text, " + DEFINITION + " text )";
         db.execSQL(sqlCreate);
         if (thisContext != null) {
+            // Only load JSON on first creation of db
             loadJSONVocab(thisContext, db);
         }
     }
@@ -46,6 +47,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    // Loads in the JSON dictionary vocab from assets folder to database
     private boolean loadJSONVocab(Context context, SQLiteDatabase db) {
         Log.d("DB", "Loading vocab json");
         String jsonString = null;
@@ -80,6 +82,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return true;
     }
 
+    // Retrieves a random word from the database
+    // Returns a pair of strings containing (word, definition)
     public String[] getRandomWord() {
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlQuery = "SELECT COUNT(*) FROM " + TABLE_VOCAB;
