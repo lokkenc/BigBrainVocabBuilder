@@ -14,6 +14,7 @@ import com.csci412.bigbrainvocabbuilder.ui.login.LoginActivity;
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseManager dbManager = null;
+    public static int screenVar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void play(View v) {
-        Intent myIntent = new Intent(this, PlayActivity.class);
+        screenVar = 0;
+        Intent myIntent = new Intent(this, CategoriesActivity.class);
         this.startActivity(myIntent);
     }
 
@@ -40,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(myIntent);
     }
     public void test(View v) {
-        Intent myIntent = new Intent(this, TestActivity.class);
+        screenVar = 1;
+        Intent myIntent = new Intent(this, CategoriesActivity.class);
         this.startActivity(myIntent);
     }
     public void stats(View v) {

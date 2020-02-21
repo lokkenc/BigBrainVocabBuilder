@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 public class PlayActivity extends AppCompatActivity {
 
+    public static int difficultyFlag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

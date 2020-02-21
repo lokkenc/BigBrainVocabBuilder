@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:paddingTop="100dp">
+        android:paddingTop="25dp">
         <ImageButton
             android:layout_width="300dp"
             android:layout_height="100dp"
@@ -79,7 +79,7 @@
     </TableRow>
 
     <TableRow
-        android:paddingTop="50dp"
+        android:paddingTop="25dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
