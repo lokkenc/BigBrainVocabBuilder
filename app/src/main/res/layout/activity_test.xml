@@ -9,6 +9,7 @@
     android:background="@color/gold">
 
     <TextView
+        android:id="@+id/testVocabWord"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -30,24 +31,39 @@
         <RadioButton
             android:id="@+id/testChoice0"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="8sp"
+            app:autoSizeMaxTextSize="26sp"
+            app:autoSizeStepGranularity="2sp"
             android:text="Definition 0"
+            android:padding="10dp"
             android:textColor="@color/gold"/>
 
         <RadioButton
             android:id="@+id/testChoice1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="8sp"
+            app:autoSizeMaxTextSize="26sp"
+            app:autoSizeStepGranularity="2sp"
+            android:padding="10dp"
             android:text="Definition 1"
             android:textColor="@color/gold"/>
 
         <RadioButton
             android:id="@+id/testChoice2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="8sp"
+            app:autoSizeMaxTextSize="26sp"
+            app:autoSizeStepGranularity="2sp"
+            android:padding="10dp"
             android:text="Definition 2"
             android:textColor="@color/gold"/>
     </RadioGroup>
