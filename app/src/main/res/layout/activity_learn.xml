@@ -9,6 +9,7 @@
     android:background="@color/gold">
 
     <TextView
+        android:id="@+id/learnWord"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -24,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
+        android:id="@+id/learnDef"
         android:textSize="20sp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
@@ -36,6 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
+        android:id="@+id/learnExample"
         android:textSize="20sp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
@@ -62,7 +65,8 @@
         android:layout_margin="30dp"
         android:background="@color/blueish"
         android:textColor="@color/gold"
-        android:text="Next Word"/>
+        android:text="Next Word"
+        android:onClick="nextWordButton"/>
 
 
 </LinearLayout>
