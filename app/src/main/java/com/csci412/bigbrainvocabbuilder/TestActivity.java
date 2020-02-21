@@ -3,11 +3,12 @@ package com.csci412.bigbrainvocabbuilder;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 public class TestActivity extends AppCompatActivity {
-    
+
     public static int difficultyFlag;
 
     TestLogic tl = null;
@@ -30,5 +31,9 @@ public class TestActivity extends AppCompatActivity {
         choice0.setText(content[1]);
         choice1.setText(content[2]);
         choice2.setText(content[3]);
+    }
+
+    public void submitButton(View v) {
+        setTestQuestion();
     }
 }
