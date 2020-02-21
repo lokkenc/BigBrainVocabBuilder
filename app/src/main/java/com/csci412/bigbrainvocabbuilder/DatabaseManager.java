@@ -80,12 +80,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return true;
     }
 
-    public String getRandomWord() {
+    public String[] getRandomWord() {
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlQuery = "SELECT COUNT(*) FROM " + TABLE_VOCAB;
         Cursor cursor = db.rawQuery(sqlQuery, null);
         if (!(cursor.moveToFirst()))
-            return null;
+            return new String[]{"OOF", "DED"};
         int wordCount = cursor.getInt(0);
         Random rand = new Random();
         int randomWordIndex = rand.nextInt(wordCount);
@@ -93,12 +93,14 @@ public class DatabaseManager extends SQLiteOpenHelper {
         sqlQuery += " where " + ID + " = " + randomWordIndex;
         cursor = db.rawQuery(sqlQuery, null);
         if (!(cursor.moveToFirst()))
-            return null;
-        String randomWord = cursor.getString(1);
+            return new String[]{"BIGOOF", "DEDDER"};
+        String[] wordDef = new String[2];
+        wordDef[0] = cursor.getString(1);
+        wordDef[1] = cursor.getString(2);
 
         db.close();
 
-        return randomWord;
+        return wordDef;
 
     }
 
