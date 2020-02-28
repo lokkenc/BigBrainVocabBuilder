@@ -1,19 +1,24 @@
 package com.csci412.bigbrainvocabbuilder;
 
+import java.util.ArrayList;
+
 public class WordSearch {
     int numRows;
     int numColumns;
+    int difficulty;
     WSCoordinate[][] grid;
+    //DatabaseManager databaseManager;
 
-    public WordSearch(int numRows, int numColumns) {
+    public WordSearch(int numRows, int numColumns, int difficulty, ArrayList<String> words) {
         this.numRows = numRows;
         this.numColumns = numColumns;
+        this.difficulty = difficulty;
         grid = new WSCoordinate[numRows][numColumns];
-        populateGrid();
+        populateGrid(words);
     }
 
-    public void populateGrid() {
-
+    public void populateGrid(ArrayList<String> words) {
+        
     }
 
     public String getWord(WSCoordinate endCoor1, WSCoordinate endCoor2) {
