@@ -12,11 +12,13 @@ public class CatchGameView extends View {
     int height;
     Paint shapePaint;
     Paint textPaint;
+    CatchGame game;
 
     public CatchGameView(Context context, int width, int height) {
         super(context);
         this.height = height;
         this.width = width;
+        game = new CatchGame(context);
 
         shapePaint = new Paint();
         shapePaint.setColor(0xFF000000);
@@ -45,6 +47,15 @@ public class CatchGameView extends View {
         canvas.drawText("Hello", width/2, height/2, textPaint);
         setTextSize("World");
         canvas.drawText("World", width/2, height/2 + 100, textPaint);
+    }
+
+    // Redraw the view
+    public void postInvalidate() {
+
+    }
+
+    public CatchGame getGame() {
+        return game;
     }
 
 }

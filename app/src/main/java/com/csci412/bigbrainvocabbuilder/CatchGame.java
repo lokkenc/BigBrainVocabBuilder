@@ -1,6 +1,7 @@
 package com.csci412.bigbrainvocabbuilder;
 
 import android.content.Context;
+import android.graphics.Rect;
 
 import com.csci412.bigbrainvocabbuilder.DatabaseManager;
 
@@ -10,13 +11,17 @@ public class CatchGame {
     private DatabaseManager dbManager;
 
     private String[] selectWord;
+    private String[] otherWords;
+    private Rect[] wordRects;
+    private Rect screenRect;
 
     public CatchGame(Context context) {
         dbManager = new DatabaseManager(context);
+        startWordPositions(3);
     }
 
-    public String[] getOtherWords(int otherWordCount) {
-        String[] otherWords = new String[otherWordCount];
+    private String[] getOtherWords(int otherWordCount) {
+        otherWords = new String[otherWordCount];
         for (int i = 0; i < otherWordCount; i++) {
             String[] otherWord = dbManager.getRandomWord();
             otherWords[i] = otherWord[0];
@@ -27,8 +32,14 @@ public class CatchGame {
         return otherWords;
     }
 
-    public String[] getMainWord() {
+    private String[] getMainWord() {
         selectWord = dbManager.getRandomWord();
         return selectWord;
+    }
+
+    public void startWordPositions(int wordCount) {
+        getMainWord();
+        getOtherWords(wordCount-1);
+
     }
 }

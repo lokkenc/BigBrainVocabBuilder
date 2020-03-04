@@ -6,9 +6,12 @@ import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Bundle;
 
+import java.util.Timer;
+
 public class CatchGameActivity extends AppCompatActivity {
 
     private CatchGameView gameView;
+    private CatchGame game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,10 @@ public class CatchGameActivity extends AppCompatActivity {
         Point size = new Point();
         getWindowManager().getDefaultDisplay().getSize(size);
         gameView = new CatchGameView(this, size.x, size.y - statusBarHeight);
+        game = gameView.getGame();
         setContentView(gameView);
+
+        Timer gameTimer = new Timer();
+        gameTimer.schedule(new CatchGameTimerTask(gameView), 0 , 100);
     }
 }
