@@ -13,6 +13,7 @@ class CatchGameTimerTask extends TimerTask {
     }
 
     public void run() {
-
+        game.moveWordsDown();
+        gameView.postInvalidate();
     }
 }

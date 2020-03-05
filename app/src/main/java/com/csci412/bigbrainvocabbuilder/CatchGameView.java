@@ -3,6 +3,7 @@ package com.csci412.bigbrainvocabbuilder;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.Rect;
 import android.view.View;
 
@@ -18,7 +19,8 @@ public class CatchGameView extends View {
         super(context);
         this.height = height;
         this.width = width;
-        game = new CatchGame(context);
+        game = new CatchGame(context, width, height);
+        game.startWordPositions(3);
 
         shapePaint = new Paint();
         shapePaint.setColor(0xFF000000);
@@ -43,15 +45,14 @@ public class CatchGameView extends View {
 
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        setTextSize("Hello");
-        canvas.drawText("Hello", width/2, height/2, textPaint);
-        setTextSize("World");
-        canvas.drawText("World", width/2, height/2 + 100, textPaint);
-    }
+        String[] words = game.getWords();
+        Point[] wordPos = game.getPositions();
 
-    // Redraw the view
-    public void postInvalidate() {
-
+        for (int i = 0; i < words.length; i++) {
+            Point pos = wordPos[i];
+            setTextSize(words[i]);
+            canvas.drawText(words[i], pos.x, pos.y, textPaint);
+        }
     }
 
     public CatchGame getGame() {

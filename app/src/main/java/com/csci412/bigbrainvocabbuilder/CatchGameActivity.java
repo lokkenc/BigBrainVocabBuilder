@@ -28,6 +28,6 @@ public class CatchGameActivity extends AppCompatActivity {
         setContentView(gameView);
 
         Timer gameTimer = new Timer();
-        gameTimer.schedule(new CatchGameTimerTask(gameView), 0 , 100);
+        gameTimer.schedule(new CatchGameTimerTask(gameView), 0 , 33);
     }
 }
