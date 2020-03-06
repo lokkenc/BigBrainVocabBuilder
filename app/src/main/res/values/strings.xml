@@ -46,7 +46,15 @@
     <string name="vibration" translatable="false">"Vibrations"</string>
     <string name="settings" translatable="false">"Settings"</string>
 
-
+    <string name="results_label" translatable="false">"Test Results"</string>
+    <string name="grade_lebel" translatable="false">"Grade:"</string>
+    <string name="gradeA_lebel" translatable="false">"A"</string>
+    <string name="gradeB_lebel" translatable="false">"B"</string>
+    <string name="gradeC_lebel" translatable="false">"C"</string>
+    <string name="gradeD_lebel" translatable="false">"D"</string>
+    <string name="gradeF_lebel" translatable="false">"F"</string>
+    <string name="NA_lebel" translatable="false">"N/A"</string>
+    <string name="score" translatable="false">"Score:"</string>
 
 
     <!-- Category Strings -->
