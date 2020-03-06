@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gold">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+
+        android:paddingTop="25dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blueish"
+            android:id="@+id/stats_label"
+            android:layout_margin="10dp"
+            android:text="@string/results_label"
+            android:textColor="@color/gold"
+            android:textSize="40sp"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:paddingTop="25dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/words_learned_label"
+            android:layout_margin="10dp"
+            android:text="@string/grade_lebel" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/words_learned_amount"
+            android:layout_margin="10dp"
+            android:text="@string/NA_lebel" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@color/blueish"
+        android:paddingTop="25dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/time_playing_games_label"
+            android:layout_margin="10dp"
+            android:textColor="@color/gold"
+            android:text="@string/score" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/time_playing_games"
+            android:layout_margin="10dp"
+            android:textColor="@color/gold"
+            android:text="@string/NA_lebel" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:paddingTop="25dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tests_taken_label"
+            android:layout_margin="10dp"
+            android:text="@string/tests_taken_label" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tests_taken"
+            android:layout_margin="10dp"
+            android:text="@string/NA_lebel" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@color/blueish"
+        android:paddingTop="25dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/time_taking_tests_label"
+            android:layout_margin="10dp"
+            android:textColor="@color/gold"
+            android:text="@string/time_taking_tests_label" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/time_taking_tests"
+            android:layout_margin="10dp"
+            android:textColor="@color/gold"
+            android:text="@string/NA_lebel" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:paddingTop="25dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/games_completed_label"
+            android:layout_margin="10dp"
+            android:text="@string/games_completed_label" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/games_completed"
+            android:layout_margin="10dp"
+            android:text="@string/NA_lebel" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:paddingTop="100dp">
+        <Button
+            android:id="@+id/goBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/go_back"
+            android:background="@color/blueish" />
+    </TableRow>
+
+
+
+</TableLayout>
