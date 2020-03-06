@@ -9,6 +9,7 @@
  *
  *
  */
+package com.csci412.bigbrainvocabbuilder;
 import java.util.Scanner;
 
 public class CrosswordBuilder{
@@ -21,7 +22,6 @@ public class CrosswordBuilder{
                 board[i][j]=' ';
             }
         }
-        Grid grid = new Grid(20);
         boolean stillBuilding = true;
         Scanner sc = new Scanner(System.in);
         int wordsAdded = 0;
