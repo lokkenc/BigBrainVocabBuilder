@@ -5,10 +5,10 @@ public class WSCoordinate {
     int y;
     char letter;
 
-    public WSCoordinate(int x, int y, char letter) {
+    public WSCoordinate(int x, int y) {
         this.x = x;
         this.y = y;
-        this.letter = letter;
+        letter = ' ';
     }
 
     public int getX() {
