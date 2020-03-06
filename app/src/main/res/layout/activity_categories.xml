@@ -31,6 +31,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
+            android:id="@+id/easyButton"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="50dp"
@@ -41,13 +42,15 @@
             android:layout_weight="1"
             android:text="@string/easy"
             android:background="@color/blueish"
-            android:textColor="@color/goldish"/>
+            android:textColor="@color/goldish"
+            android:onClick="buttonClick" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
+            android:id="@+id/mediumButton"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="50dp"
@@ -58,13 +61,15 @@
             android:layout_weight="1"
             android:text="@string/medium"
             android:background="@color/blueish"
-            android:textColor="@color/goldish"/>
+            android:textColor="@color/goldish"
+            android:onClick="buttonClick" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
+            android:id="@+id/hardButton"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="50dp"
@@ -75,13 +80,15 @@
             android:layout_weight="1"
             android:text="@string/hard"
             android:background="@color/blueish"
-            android:textColor="@color/goldish"/>
+            android:textColor="@color/goldish"
+            android:onClick="buttonClick" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageButton
+            android:id="@+id/difficultButton"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="50dp"
@@ -92,13 +99,15 @@
             android:layout_weight="1"
             android:scaleType="fitCenter"
             android:background="@color/blueish"
-            android:src="@drawable/dif"/>
+            android:src="@drawable/dif"
+            android:onClick="buttonClick" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageButton
+            android:id="@+id/extremeButton"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="50dp"
@@ -109,7 +118,8 @@
             android:layout_weight="1"
             android:background="@color/blueish"
             android:scaleType="fitCenter"
-            android:src="@drawable/extreme"/>
+            android:src="@drawable/extreme"
+            android:onClick="buttonClick" />
     </LinearLayout>
 
 

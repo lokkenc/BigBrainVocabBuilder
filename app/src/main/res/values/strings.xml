@@ -38,6 +38,8 @@
     <string name="time_taking_tests_label" translatable="false">"Time Spent Taking Tests"</string>
     <string name="go_back" translatable="false">"GO BACK"</string>
     <string name="games_completed_label" translatable="false">"Games Completed"</string>
+    <string name="game_over_message" translatable="false">"You Win!"</string>
+    <string name="game_over_button" translatable="false">"Go Back"</string>
 
     <string name="master_volume" translatable="false">"Master Volume"</string>
     <string name="music" translatable="false">"Music"</string>
