@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.util.Log;
 import android.view.View;
 
 public class CatchGameView extends View {
@@ -43,15 +44,15 @@ public class CatchGameView extends View {
 
     public void setTextSize(String text, Paint p, int size) {
         float testSize = 48f;
-        textPaint.setTextSize(testSize);
+        p.setTextSize(testSize);
         Rect bounds = new Rect();
-        textPaint.getTextBounds(text, 0, text.length(), bounds);
+        p.getTextBounds(text, 0, text.length(), bounds);
 
-        float newTextSize = testSize * width / 5 / bounds.width();
-        if (newTextSize > 70) {
-            newTextSize = 70;
+        float newTextSize = testSize * size / bounds.width();
+        if (newTextSize > 60) {
+            newTextSize = 60;
         }
-        textPaint.setTextSize(newTextSize);
+        p.setTextSize(newTextSize);
     }
 
     public void onDraw(Canvas canvas) {
@@ -76,6 +77,12 @@ public class CatchGameView extends View {
             canvas.drawRect(catchRect, shapePaint);
 
             setTextSize(definition, defPaint, width - 100);
+            Rect textRect = new Rect();
+            defPaint.getTextBounds(definition, 0, definition.length(), textRect);
+            if (textRect.width() > width - 100) {
+                Log.i("Catch", "Definition too big");
+                Log.i("Catch", "Definition size is " + defPaint.getTextSize());
+            }
             canvas.drawText(definition, 50, height / 2, defPaint);
 
             for (int i = 0; i < words.length; i++) {
