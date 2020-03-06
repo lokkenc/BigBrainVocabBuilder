@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ResultsActivity"></activity>
+        <activity android:name=".WordSearchActivity"></activity>
+        <activity android:name=".CatchGameActivity"></activity>
         <activity android:name=".CategoriesActivity" />
         <activity android:name=".StatsActivity" />
         <activity android:name=".TestActivity" />

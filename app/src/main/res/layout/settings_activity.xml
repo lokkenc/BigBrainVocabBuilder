@@ -55,7 +55,7 @@
             android:layout_margin="10dp"
             android:textSize="20sp"
             android:textColor="@color/colorPrimaryDark"
-            android:text="@string/music">>
+            android:text="@string/music">
 
         </TextView>
 
@@ -81,7 +81,7 @@
             android:layout_margin="10dp"
             android:textSize="20sp"
             android:textColor="@color/colorPrimaryDark"
-            android:text="@string/sound_effects">>
+            android:text="@string/sound_effects">
 
         </TextView>
 
