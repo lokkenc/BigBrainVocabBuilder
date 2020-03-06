@@ -13,7 +13,11 @@ class CatchGameTimerTask extends TimerTask {
     }
 
     public void run() {
-        game.moveWordsDown();
+        if (!game.isGameOver()) {
+            game.moveCatcher();
+            game.moveWordsDown();
+            game.checkHit();
+        }
         gameView.postInvalidate();
     }
 }

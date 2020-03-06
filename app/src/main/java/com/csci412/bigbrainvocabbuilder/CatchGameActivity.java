@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Timer;
 
@@ -30,4 +34,18 @@ public class CatchGameActivity extends AppCompatActivity {
         Timer gameTimer = new Timer();
         gameTimer.schedule(new CatchGameTimerTask(gameView), 0 , 33);
     }
+
+    public boolean onTouchEvent(MotionEvent ev) {
+        game.moveInput((int)ev.getX());
+        if (game.backInput((int)ev.getX(),(int)ev.getY())) {
+            goBack();
+        }
+        return true;
+    }
+
+    public void goBack() {
+        Log.i("Catch", "Finishing game");
+        super.onBackPressed();
+    }
+
 }

@@ -3,13 +3,14 @@ package com.csci412.bigbrainvocabbuilder;
 import android.content.Context;
 import android.graphics.Point;
 import android.graphics.Rect;
-
-import com.csci412.bigbrainvocabbuilder.DatabaseManager;
+import android.util.Log;
 
 import java.util.Random;
 
 public class CatchGame {
 
+    private int round = 1;
+    private int difficulty = PlayActivity.difficultyFlag;
     private int score = 0;
     private DatabaseManager dbManager;
 
@@ -20,10 +21,33 @@ public class CatchGame {
     private int height;
     private int width;
 
+    private boolean moveLeft = false;
+    private boolean moveRight = false;
+
+    private Rect catcherRect;
+
+    private boolean gameOver = false;
+    private Rect backRect;
+    private Point scorePos;
+
     public CatchGame(Context context, int width, int height) {
         dbManager = new DatabaseManager(context);
         this.height = height;
         this.width = width;
+        catcherRect = new Rect(width/2 - width / 8, height - height / 8,
+                width/2 + width / 8, height - height / 10);
+
+        backRect = new Rect(width/2 - width / 8, height/2 - width / 10,
+                width/2 + width / 8, height/2 + width / 10);
+        scorePos = new Point(width / 2 - width / 10, height/2 - width / 8);
+    }
+
+    public Rect getBackRect() {
+        return backRect;
+    }
+
+    public Point getScorePos() {
+        return scorePos;
     }
 
     private void getOtherWords(int otherWordCount) {
@@ -60,13 +84,98 @@ public class CatchGame {
         return allWords;
     }
 
+    public String getDefinition() {
+        return selectWord[1];
+    }
+
     public Point[] getPositions() {
         return wordPositions;
+    }
+
+    public Rect getCatcherRect() {
+        return catcherRect;
     }
 
     public void moveWordsDown() {
         for (Point p : wordPositions) {
             p.y += 10;
         }
+    }
+
+    public void moveCatcher() {
+        if (moveRight) {
+            catcherRect.left += 12;
+            catcherRect.right += 12;
+            if (catcherRect.right > width) {
+                int rightAdjust = catcherRect.right;
+                rightAdjust -= width;
+                catcherRect.left -= rightAdjust;
+                catcherRect.right -= rightAdjust;
+            }
+            moveRight = false;
+        } else if (moveLeft) {
+            catcherRect.left -= 12;
+            catcherRect.right -= 12;
+            if (catcherRect.left < 0) {
+                int leftAdjust = catcherRect.left;
+                catcherRect.left -= leftAdjust;
+                catcherRect.right -= leftAdjust;
+            }
+            moveLeft = false;
+        }
+    }
+
+    public void moveInput(int xPos) {
+        if (xPos <= width/2) {
+            moveLeft = true;
+            moveRight = false;
+        } else {
+            moveRight = true;
+            moveLeft = false;
+        }
+    }
+
+    public boolean backInput(int xPos, int yPos) {
+        if (gameOver && backRect.contains(xPos, yPos)) {
+            Log.i("Catch", "Press Back");
+            return true;
+        }
+        return false;
+    }
+
+    public void checkHit() {
+        for (int i = 0; i < wordPositions.length; i++) {
+            Point p = wordPositions[i];
+            if (catcherRect.intersects(p.x, p.y, p.x + width / 5, p.y)) {
+                if (i == 0) {
+                    endRound(true);
+                }
+                p.y = height * 2;
+                endRound(false);
+            }
+        }
+        if (wordPositions[0].y > height + 10) {
+            endRound(false);
+        }
+    }
+
+    private void endRound (boolean won) {
+        if (won) {
+            score++;
+        }
+        round++;
+        if (round > 3 + difficulty) {
+            gameOver = true;
+        } else {
+            startWordPositions(3);
+        }
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public int getScore() {
+        return score;
     }
 }
