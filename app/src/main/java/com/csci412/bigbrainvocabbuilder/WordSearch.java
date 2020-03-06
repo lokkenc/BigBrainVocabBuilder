@@ -8,6 +8,7 @@ public class WordSearch {
     int numColumns;
     WSCoordinate[][] grid;
     ArrayList<String> words;
+    int numGuessed;
 
     public WordSearch(int numRows, int numColumns, ArrayList<String> words) {
         this.numRows = numRows;
@@ -111,7 +112,13 @@ public class WordSearch {
         }
     }
 
-    public String getWord(WSCoordinate endCoor1, WSCoordinate endCoor2) {
+
+    public String getWord(int row1, int column1, int row2, int column2) {
+        WSCoordinate endCoor1 = grid[row1][column1];
+        WSCoordinate endCoor2 = grid[row2][column2];
+        return getWordHelper(endCoor1, endCoor2);
+    }
+    private String getWordHelper(WSCoordinate endCoor1, WSCoordinate endCoor2) {
         String ret = "";
 
 
@@ -172,11 +179,25 @@ public class WordSearch {
 
     public Boolean isWordInList(String word) {
         if (words.contains(word)) {
+            numGuessed++;
             return true;
         } else if (words.contains(new StringBuilder(word).reverse().toString())) {
+            numGuessed++;
             return true;
         }
         return false;
+    }
+
+    public char getChar(int row, int column) {
+        return grid[row][column].getLetter();
+    }
+
+    public ArrayList<String> getWords() {
+        return words;
+    }
+
+    public Boolean checkGameOver() {
+        return numGuessed == words.size();
     }
 
 //    public void printGrid() {
