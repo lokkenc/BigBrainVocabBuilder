@@ -15,8 +15,14 @@ public class PlayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_play);
     }
 
+
     public void wordSearch(View v) {
         Intent myIntent = new Intent(this, WordSearchActivity.class);
         this.startActivity(myIntent);
+    }
+
+    public void LoadCatchGame(View v) {
+        Intent catchGameIntent = new Intent(this, CatchGameActivity.class);
+        this.startActivity(catchGameIntent);
     }
 }

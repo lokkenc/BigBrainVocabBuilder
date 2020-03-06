@@ -62,7 +62,8 @@
         android:gravity="center"
         android:text="@string/play_game_word_catch"
         android:textColor="@color/gold"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:onClick="LoadCatchGame"/>
 
 
 </LinearLayout>
