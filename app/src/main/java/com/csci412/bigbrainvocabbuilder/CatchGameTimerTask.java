@@ -13,6 +13,7 @@ class CatchGameTimerTask extends TimerTask {
     }
 
     public void run() {
+        // Run game updates and refresh screen
         if (!game.isGameOver()) {
             game.moveCatcher();
             game.moveWordsDown();

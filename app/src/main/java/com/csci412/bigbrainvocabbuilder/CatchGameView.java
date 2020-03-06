@@ -42,6 +42,8 @@ public class CatchGameView extends View {
         defPaint.setTextSize(48f);
     }
 
+
+    // Auto size text to fit given width (size)
     public void setTextSize(String text, Paint p, int size) {
         float testSize = 48f;
         p.setTextSize(testSize);
@@ -57,7 +59,11 @@ public class CatchGameView extends View {
 
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        shapePaint.setColor(getResources().getColor(R.color.gold));
+        canvas.drawRect(0, 0, width, height, shapePaint);
+        shapePaint.setColor(getResources().getColor(R.color.blueish));
         if (game.isGameOver()) {
+            // Draw the end screen with user score and back button
             Rect backRect = game.getBackRect();
             Point scorePos = game.getScorePos();
             int score = game.getScore();
@@ -69,6 +75,7 @@ public class CatchGameView extends View {
             setTextSize(String.valueOf(score), defPaint, width / 10);
             canvas.drawText("Score: " + score, scorePos.x, scorePos.y, defPaint);
         } else {
+            // Draw the game, with position of each word, the catcher, and definition
             String[] words = game.getWords();
             Point[] wordPos = game.getPositions();
             Rect catchRect = game.getCatcherRect();

@@ -50,6 +50,7 @@ public class CatchGame {
         return scorePos;
     }
 
+    // Get words other than the selected main word
     private void getOtherWords(int otherWordCount) {
         otherWords = new String[otherWordCount];
         for (int i = 0; i < otherWordCount; i++) {
@@ -61,10 +62,12 @@ public class CatchGame {
         }
     }
 
+    // Get a random word to be correct word
     private void getMainWord() {
         selectWord = dbManager.getRandomWord();
     }
 
+    // Set words and starting positions
     public void startWordPositions(int wordCount) {
         getMainWord();
         getOtherWords(wordCount-1);
@@ -77,6 +80,7 @@ public class CatchGame {
         }
     }
 
+    // Get list of all words, first is always correct word
     public String[] getWords() {
         String[] allWords = new String[otherWords.length + 1];
         allWords[0] = selectWord[0];
@@ -84,10 +88,12 @@ public class CatchGame {
         return allWords;
     }
 
+    // Get definition of correct word
     public String getDefinition() {
         return selectWord[1];
     }
 
+    // Get positions of words in same order as getWords()
     public Point[] getPositions() {
         return wordPositions;
     }
@@ -96,12 +102,15 @@ public class CatchGame {
         return catcherRect;
     }
 
+    // Moves all words down screen
     public void moveWordsDown() {
         for (Point p : wordPositions) {
-            p.y += 10;
+            p.y += 9 + difficulty;
         }
     }
 
+
+    // Move the catcher and prevent catcher from going off screen
     public void moveCatcher() {
         if (moveRight) {
             catcherRect.left += 12;
@@ -125,6 +134,7 @@ public class CatchGame {
         }
     }
 
+    // Set catcher to move on next timer task based on user's touch position (left/right screen)
     public void moveInput(int xPos) {
         if (xPos <= width/2) {
             moveLeft = true;
@@ -135,6 +145,7 @@ public class CatchGame {
         }
     }
 
+    // Returns true if user pressed back button rect
     public boolean backInput(int xPos, int yPos) {
         if (gameOver && backRect.contains(xPos, yPos)) {
             Log.i("Catch", "Press Back");
@@ -143,6 +154,7 @@ public class CatchGame {
         return false;
     }
 
+    // Checks word collided with catcher or correct word fell below screen
     public void checkHit() {
         for (int i = 0; i < wordPositions.length; i++) {
             Point p = wordPositions[i];
@@ -159,6 +171,7 @@ public class CatchGame {
         }
     }
 
+    // End round then continue to next or end game
     private void endRound (boolean won) {
         if (won) {
             score++;
