@@ -8,6 +8,7 @@ public class WordSearch {
     int numColumns;
     WSCoordinate[][] grid;
     ArrayList<String> words;
+    ArrayList<String> wordsGuessed;
     int numGuessed;
 
     public WordSearch(int numRows, int numColumns, ArrayList<String> words) {
@@ -15,6 +16,7 @@ public class WordSearch {
         this.numColumns = numColumns;
         this.words = words;
         grid = new WSCoordinate[numRows][numColumns];
+        wordsGuessed = new ArrayList<String>();
         initGrid();
         populateGrid();
     }
@@ -179,9 +181,17 @@ public class WordSearch {
 
     public Boolean isWordInList(String word) {
         if (words.contains(word)) {
+            if (wordsGuessed.contains(word)) {
+                return false;
+            }
+            wordsGuessed.add(word);
             numGuessed++;
             return true;
         } else if (words.contains(new StringBuilder(word).reverse().toString())) {
+            if (wordsGuessed.contains(new StringBuilder(word).reverse().toString())) {
+                return false;
+            }
+            wordsGuessed.add(word);
             numGuessed++;
             return true;
         }
