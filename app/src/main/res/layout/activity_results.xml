@@ -57,7 +57,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/time_playing_games"
+            android:id="@+id/score_amount"
             android:layout_margin="10dp"
             android:textColor="@color/gold"
             android:text="@string/NA_lebel" />
@@ -73,52 +73,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/tests_taken_label"
             android:layout_margin="10dp"
-            android:text="@string/tests_taken_label" />
+            android:text="@string/questions_asked_label" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tests_taken"
-            android:layout_margin="10dp"
-            android:text="@string/NA_lebel" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:background="@color/blueish"
-        android:paddingTop="25dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/time_taking_tests_label"
-            android:layout_margin="10dp"
-            android:textColor="@color/gold"
-            android:text="@string/time_taking_tests_label" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/time_taking_tests"
-            android:layout_margin="10dp"
-            android:textColor="@color/gold"
-            android:text="@string/NA_lebel" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:paddingTop="25dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/games_completed_label"
-            android:layout_margin="10dp"
-            android:text="@string/games_completed_label" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/games_completed"
             android:layout_margin="10dp"
             android:text="@string/NA_lebel" />
     </TableRow>
