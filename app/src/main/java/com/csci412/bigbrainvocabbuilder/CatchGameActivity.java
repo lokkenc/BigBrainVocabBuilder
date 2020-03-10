@@ -19,6 +19,7 @@ public class CatchGameActivity extends AppCompatActivity {
     private CatchGame game;
     private int statusBarHeight = 0;
     private SoundPool soundPool;
+    private int thunkSoundId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,12 @@ public class CatchGameActivity extends AppCompatActivity {
         gameView = new CatchGameView(this, size.x, size.y - statusBarHeight);
         game = gameView.getGame();
         setContentView(gameView);
+
+        SoundPool.Builder poolBuilder = new SoundPool.Builder();
+        poolBuilder.setMaxStreams(2);
+        soundPool = poolBuilder.build();
+        thunkSoundId = soundPool.load(this, R.raw.thunk, 1);
+
 
         Timer gameTimer = new Timer();
         gameTimer.schedule(new CatchGameTimerTask(gameView), 0 , 33);
@@ -48,6 +55,10 @@ public class CatchGameActivity extends AppCompatActivity {
     public void goBack() {
         Log.i("Catch", "Finishing game");
         super.onBackPressed();
+    }
+
+    public void playThunkSound() {
+        soundPool.play(thunkSoundId, 1, 1, 1, 0, 1);
     }
 
 }

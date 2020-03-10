@@ -159,6 +159,7 @@ public class CatchGame {
         for (int i = 0; i < wordPositions.length; i++) {
             Point p = wordPositions[i];
             if (catcherRect.intersects(p.x, p.y, p.x + width / 5, p.y)) {
+
                 if (i == 0) {
                     endRound(true);
                 }
