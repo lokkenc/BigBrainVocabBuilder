@@ -22,10 +22,10 @@ public class CrosswordBuilder{
                 board[i][j]=' ';
             }
         }
-        boolean stillBuilding = true;
+
         Scanner sc = new Scanner(System.in);
         int wordsAdded = 0;
-        while(wordsAdded<10){
+        while(wordsAdded<5){
             boolean cordsFound = false;
             //Word word =  new Word();
             while(!cordsFound){
@@ -44,23 +44,19 @@ public class CrosswordBuilder{
                             for(int i=0;i<w.length();i++){
                                 if(board[y][x]==w.charAt(i)){
                                     boolean cordsValid = true;
-                                    for(int temp =i;temp<w.length()-1;){
+                                    for(int temp =i;temp<w.length();temp++){
                                         int newY = y+ temp - i;
                                         if(newY==board.length){
                                             cordsValid=false;
                                             break;
                                         }
-                                        if(belowFree(x, newY)){
-                                            if(temp==i){
-                                                temp++;
+                                        if(belowFree(x, newY)){//REVERT TO HEERE IF YOU BREAK IT
+                                            if(temp==i)
                                                 continue;
-                                            }
-                                            temp++;
+                                            
                                             if(belowFree(x, newY) && sidesFree(x, newY)){
-                                                if(newY==board.length-1){
-                                                    cordsValid=false;
-                                                    break;
-                                                }
+                                                //nothing
+                                                
                                             }
                                             else{
                                                 cordsValid=false;
@@ -74,7 +70,7 @@ public class CrosswordBuilder{
                                     }
                                     if(cordsValid==false)
                                         continue;
-                                    for(int temp = i; temp>0;){
+                                    for(int temp = i; temp>=0;temp--){
                                         int newY = y+ temp - i;
                                         if(newY<0){
                                             cordsValid=false;
@@ -82,15 +78,10 @@ public class CrosswordBuilder{
                                         }
                                         if(aboveFree(x, newY)){
                                             if(temp==i){
-                                                temp--;
                                                 continue;
                                             }
-                                            temp--;
                                             if(aboveFree(x, newY) && sidesFree(x, newY)){
-                                                if(newY==0){
-                                                    cordsValid=false;
-                                                    break;
-                                                }
+                                                //nothing
                                             }
                                             else{
                                                 cordsValid=false;
@@ -131,7 +122,7 @@ public class CrosswordBuilder{
                             for(int i=0;i<w.length();i++){
                                 if(board[y][x]==w.charAt(i)){
                                     boolean cordsValid = true;
-                                    for(int temp =i;temp<w.length()-1;){
+                                    for(int temp =i;temp<w.length();temp++){
                                         int newX = x+ temp - i;
                                         if(newX==board.length){
                                             cordsValid=false;
@@ -139,15 +130,10 @@ public class CrosswordBuilder{
                                         }
                                         if(rightFree(newX, y)){
                                             if(temp==i){
-                                                temp++;
                                                 continue;
                                             }
-                                            temp++;
                                             if(rightFree(newX, y) && aboveBelowFree(newX, y)){
-                                                if(newX==board.length-1){
-                                                    cordsValid=false;
-                                                    break;
-                                                }
+                                                //nothing
                                             }
                                             else{
                                                 cordsValid=false;
@@ -161,7 +147,7 @@ public class CrosswordBuilder{
                                     }
                                     if(cordsValid==false)
                                         continue;
-                                    for(int temp = i; temp>0;){
+                                    for(int temp = i; temp>=0;temp--){
                                         int newX = x+ temp - i;
                                         if(newX<0){
                                             cordsValid=false;
@@ -169,15 +155,10 @@ public class CrosswordBuilder{
                                         }
                                         if(leftFree(newX, y)){
                                             if(temp==i){
-                                                temp--;
                                                 continue;
                                             }
-                                            temp--;
                                             if(leftFree(newX, y) && aboveBelowFree(newX, y)){
-                                                if(newX==0){
-                                                    cordsValid=false;
-                                                    break;
-                                                }
+                                                //nothing
                                             }
                                             else{
                                                 cordsValid=false;
