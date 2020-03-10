@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.res.Resources;
 import android.graphics.Point;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -16,12 +17,13 @@ public class CatchGameActivity extends AppCompatActivity {
 
     private CatchGameView gameView;
     private CatchGame game;
+    private int statusBarHeight = 0;
+    private SoundPool soundPool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Resources res = getResources();
-        int statusBarHeight = 0;
         int statusBarId = res.getIdentifier("status_bar_height", "dimen", "android");
         if (statusBarId > 0)
             statusBarHeight = res.getDimensionPixelSize(statusBarId);
@@ -37,7 +39,7 @@ public class CatchGameActivity extends AppCompatActivity {
 
     public boolean onTouchEvent(MotionEvent ev) {
         game.moveInput((int)ev.getX());
-        if (game.backInput((int)ev.getX(),(int)ev.getY())) {
+        if (game.backInput((int)ev.getX(),(int)ev.getY() - statusBarHeight)) {
             goBack();
         }
         return true;
