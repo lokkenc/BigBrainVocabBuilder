@@ -9,9 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ResultsActivity"></activity>
-        <activity android:name=".WordSearchActivity"></activity>
-        <activity android:name=".CatchGameActivity"></activity>
+        <activity android:name=".EditProfileActivity"></activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ResultsActivity" />
+        <activity android:name=".WordSearchActivity" />
+        <activity android:name=".CatchGameActivity" />
         <activity android:name=".CategoriesActivity" />
         <activity android:name=".StatsActivity" />
         <activity android:name=".TestActivity" />

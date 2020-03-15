@@ -40,7 +40,7 @@
     <string name="games_completed_label" translatable="false">"Games Completed"</string>
     <string name="game_over_message" translatable="false">"You Win!"</string>
     <string name="game_over_button" translatable="false">"Go Back"</string>
-    <string name ="questions_asked_label">Questions Asked</string>
+    <string name="questions_asked_label">Questions Asked</string>
 
     <string name="master_volume" translatable="false">"Master Volume"</string>
     <string name="music" translatable="false">"Music"</string>
@@ -58,6 +58,8 @@
     <string name="gradeF_lebel" translatable="false">"F"</string>
     <string name="NA_lebel" translatable="false">"N/A"</string>
     <string name="score" translatable="false">"Score:"</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="words_left_label">Words Left to Learn</string>
 
 
     <!-- Category Strings -->
@@ -65,5 +67,6 @@
     <string name="easy" translatable="false">EASY WORDS</string>
     <string name="medium" translatable="false">MEDIUM WORDS</string>
     <string name="hard" translatable="false">HARD WORDS</string>
+    <string name="title_activity_profile">ProfileActivity</string>
 
 </resources>
