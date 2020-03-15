@@ -1,6 +1,7 @@
 package com.csci412.bigbrainvocabbuilder;
 
 import android.content.Context;
+import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.Log;
@@ -29,6 +30,8 @@ public class CatchGame {
     private boolean gameOver = false;
     private Rect backRect;
     private Point scorePos;
+
+    public boolean tryThunk;
 
     public CatchGame(Context context, int width, int height) {
         dbManager = new DatabaseManager(context);
@@ -162,9 +165,13 @@ public class CatchGame {
 
                 if (i == 0) {
                     endRound(true);
+                    tryThunk = true;
+                    return;
                 }
                 p.y = height * 2;
+                tryThunk = true;
                 endRound(false);
+                return;
             }
         }
         if (wordPositions[0].y > height + 10) {

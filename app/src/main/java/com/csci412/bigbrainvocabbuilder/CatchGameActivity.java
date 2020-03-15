@@ -20,6 +20,9 @@ public class CatchGameActivity extends AppCompatActivity {
     private int statusBarHeight = 0;
     private SoundPool soundPool;
     private int thunkSoundId;
+    private int musicSoundId;
+
+    private boolean musicStarted = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +41,7 @@ public class CatchGameActivity extends AppCompatActivity {
         poolBuilder.setMaxStreams(2);
         soundPool = poolBuilder.build();
         thunkSoundId = soundPool.load(this, R.raw.thunk, 1);
-
+        musicSoundId = soundPool.load(this, R.raw.catch_music, 1);
 
         Timer gameTimer = new Timer();
         gameTimer.schedule(new CatchGameTimerTask(gameView), 0 , 33);
@@ -53,12 +56,21 @@ public class CatchGameActivity extends AppCompatActivity {
     }
 
     public void goBack() {
-        Log.i("Catch", "Finishing game");
+        soundPool.autoPause();
         super.onBackPressed();
     }
 
     public void playThunkSound() {
         soundPool.play(thunkSoundId, 1, 1, 1, 0, 1);
+    }
+
+    public void tryPlayMusic() {
+        if (!musicStarted) {
+            int check = soundPool.play(musicSoundId, 1, 1, 1, -1, 1);
+            if (check != 0) {
+                musicStarted = true;
+            }
+        }
     }
 
 }

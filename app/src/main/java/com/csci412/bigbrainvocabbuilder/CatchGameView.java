@@ -70,7 +70,7 @@ public class CatchGameView extends View {
             canvas.drawRect(backRect, shapePaint);
             setTextSize("Back", textPaint, (int)(backRect.width() * 0.9f));
             textPaint.setColor(getResources().getColor(R.color.gold));
-            canvas.drawText("Back", backRect.left, (backRect.bottom + backRect.top)/2, textPaint);
+            canvas.drawText("Back", backRect.centerX(), backRect.centerY(), textPaint);
 
             setTextSize(String.valueOf(score), defPaint, width / 10);
             canvas.drawText("Score: " + score, scorePos.x, scorePos.y, defPaint);
