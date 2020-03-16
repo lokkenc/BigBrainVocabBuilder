@@ -14,24 +14,34 @@ import java.util.Scanner;
 
 public class CrosswordBuilder{
 
-    public static char [][] board;
-    public static void main(String[] argv){
-        board = new char[20][20];
+    private char [][] keyBoard;
+    private int difficulty;
+
+
+    public CrosswordBuilder(int diff){
+        difficulty=diff;
+        keyBoard=getBoard();
+    }
+
+    private char[][] getBoard(){
+        char[][] board = new char[20][20];
         for(int i=0; i<board.length;i++){
             for(int j=0; j<board.length;j++){
                 board[i][j]=' ';
             }
         }
 
-        Scanner sc = new Scanner(System.in);
         int wordsAdded = 0;
-        while(wordsAdded<5){
+        int difficulty = 5;//set by user
+        while(wordsAdded<this.difficulty){
             boolean cordsFound = false;
             //Word word =  new Word();
             while(!cordsFound){
-            //getarandomword with some criteria
-            String w = sc.nextLine();
+                //getarandomword with some criteria
+                String w = "";//breakdown of
                 if(wordsAdded == 0){
+                    if(5+w.length()>=board.length)
+                        break;
                     for(int i = 0; i<w.length(); i++){
                         board[4+(wordsAdded*2)][4+i] = w.charAt(i);
                     }
@@ -50,13 +60,13 @@ public class CrosswordBuilder{
                                             cordsValid=false;
                                             break;
                                         }
-                                        if(belowFree(x, newY)){//REVERT TO HEERE IF YOU BREAK IT
+                                        if(belowFree(board, x, newY)){
                                             if(temp==i)
                                                 continue;
-                                            
-                                            if(belowFree(x, newY) && sidesFree(x, newY)){
+
+                                            if(belowFree(board, x, newY) && sidesFree(board, x, newY)){
                                                 //nothing
-                                                
+
                                             }
                                             else{
                                                 cordsValid=false;
@@ -64,7 +74,7 @@ public class CrosswordBuilder{
                                             }
                                         }
                                         else{
-                                            cordsValid = false; 
+                                            cordsValid = false;
                                             break;
                                         }
                                     }
@@ -76,11 +86,11 @@ public class CrosswordBuilder{
                                             cordsValid=false;
                                             break;
                                         }
-                                        if(aboveFree(x, newY)){
+                                        if(aboveFree(board, x, newY)){
                                             if(temp==i){
                                                 continue;
                                             }
-                                            if(aboveFree(x, newY) && sidesFree(x, newY)){
+                                            if(aboveFree(board, x, newY) && sidesFree(board, x, newY)){
                                                 //nothing
                                             }
                                             else{
@@ -89,7 +99,7 @@ public class CrosswordBuilder{
                                             }
                                         }
                                         else{
-                                            cordsValid = false; 
+                                            cordsValid = false;
                                             break;
                                         }
                                     }
@@ -114,7 +124,7 @@ public class CrosswordBuilder{
                         if(cordsFound==true)
                             break;
                     }
-                    
+
                 }
                 else{// hor
                     for(int y =0; y<board.length;y++){
@@ -128,11 +138,11 @@ public class CrosswordBuilder{
                                             cordsValid=false;
                                             break;
                                         }
-                                        if(rightFree(newX, y)){
+                                        if(rightFree(board, newX, y)){
                                             if(temp==i){
                                                 continue;
                                             }
-                                            if(rightFree(newX, y) && aboveBelowFree(newX, y)){
+                                            if(rightFree(board, newX, y) && aboveBelowFree(board, newX, y)){
                                                 //nothing
                                             }
                                             else{
@@ -141,7 +151,7 @@ public class CrosswordBuilder{
                                             }
                                         }
                                         else{
-                                            cordsValid = false; 
+                                            cordsValid = false;
                                             break;
                                         }
                                     }
@@ -153,11 +163,11 @@ public class CrosswordBuilder{
                                             cordsValid=false;
                                             break;
                                         }
-                                        if(leftFree(newX, y)){
+                                        if(leftFree(board,newX, y)){
                                             if(temp==i){
                                                 continue;
                                             }
-                                            if(leftFree(newX, y) && aboveBelowFree(newX, y)){
+                                            if(leftFree(board, newX, y) && aboveBelowFree(board, newX, y)){
                                                 //nothing
                                             }
                                             else{
@@ -166,7 +176,7 @@ public class CrosswordBuilder{
                                             }
                                         }
                                         else{
-                                            cordsValid = false; 
+                                            cordsValid = false;
                                             break;
                                         }
                                     }
@@ -190,24 +200,16 @@ public class CrosswordBuilder{
                         }
                         if(cordsFound==true)
                             break;
-                    } 
+                    }
                 }
             }
-            
+
 
         }
-        for(int i =0; i<board.length;i++){
-            for(int j =0; j<board.length; j++){
-                if(board[i][j]==' ')
-                    System.out.print("* ");
-                else
-                    System.out.print(board[i][j]+" ");
-            }
-            System.out.println();
-        }
+        return board;
     }
 
-    public static boolean sidesFree(int x, int y){
+    private static boolean sidesFree(char[][] board, int x, int y){
         if(x==0){
             if(board[y][x+1]==' ')
                 return true;
@@ -221,7 +223,7 @@ public class CrosswordBuilder{
         }
         return false;
     }
-    public static boolean aboveBelowFree(int x, int y){
+    private static boolean aboveBelowFree(char[][] board, int x, int y){
         if(y==0){
             if(board[y+1][x]==' ')
                 return true;
@@ -235,7 +237,7 @@ public class CrosswordBuilder{
         }
         return false;
     }
-    public static boolean aboveFree(int x, int y){
+    private static boolean aboveFree(char[][] board, int x, int y){
         if(y==0)
             return true;
         if(board[y-1][x]==' '){
@@ -243,21 +245,21 @@ public class CrosswordBuilder{
         }
         return false;
     }
-    public static boolean belowFree(int x, int y){
+    private static boolean belowFree(char[][] board, int x, int y){
         if(y==board.length-1)
             return true;
         if(board[y+1][x]==' ')
             return true;
         return false;
     }
-    public static boolean leftFree(int x, int y){
+    private static boolean leftFree(char[][] board, int x, int y){
         if(x==0)
             return true;
         if(board[y][x-1]==' ')
             return true;
         return false;
     }
-    public static boolean rightFree(int x, int y){
+    private static boolean rightFree(char[][] board, int x, int y){
         if(x==board.length-1)
             return true;
         if(board[y][x+1]==' '){
