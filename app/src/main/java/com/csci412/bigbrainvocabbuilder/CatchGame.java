@@ -57,7 +57,7 @@ public class CatchGame {
     private void getOtherWords(int otherWordCount) {
         otherWords = new String[otherWordCount];
         for (int i = 0; i < otherWordCount; i++) {
-            String[] otherWord = dbManager.getRandomWord();
+            String[] otherWord = dbManager.getRandomWord(-1);
             otherWords[i] = otherWord[0];
             if (otherWords[0].equals(selectWord[0])) {
                 i--;
@@ -67,7 +67,7 @@ public class CatchGame {
 
     // Get a random word to be correct word
     private void getMainWord() {
-        selectWord = dbManager.getRandomWord();
+        selectWord = dbManager.getRandomWord(-1);
     }
 
     // Set words and starting positions
