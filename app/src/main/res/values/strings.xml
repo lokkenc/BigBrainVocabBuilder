@@ -60,6 +60,9 @@
     <string name="score" translatable="false">"Score:"</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="words_left_label">Words Left to Learn</string>
+    <string name="first_name_label">First Name:</string>
+    <string name="last_name_label">Last Name:</string>
+    <string name="pp_change_label">Take Picture</string>
 
 
     <!-- Category Strings -->

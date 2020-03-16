@@ -47,6 +47,19 @@ public class DatabaseManager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public int getNumberOfWords() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sqlQuery = "SELECT COUNT(*) FROM " + TABLE_VOCAB;
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+        if (!(cursor.moveToFirst())) {
+            return 0;
+        }
+
+        int wordCount = cursor.getInt(0);
+        db.close();
+        return wordCount;
+    }
+
     // Loads in the JSON dictionary vocab from assets folder to database
     private boolean loadJSONVocab(Context context, SQLiteDatabase db) {
         Log.d("DB", "Loading vocab json");

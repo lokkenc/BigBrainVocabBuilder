@@ -6,6 +6,14 @@ public class Statistics {
     private int testsTaken;
     private int gamesCompleted;
 
+    public Statistics(int wordsLeft) {
+        wordsLearned = 0;
+        this.wordsLeft = wordsLeft;
+        testsTaken = 0;
+        gamesCompleted = 0;
+
+    }
+
     public int getWordsLearned() {
         return wordsLearned;
     }
