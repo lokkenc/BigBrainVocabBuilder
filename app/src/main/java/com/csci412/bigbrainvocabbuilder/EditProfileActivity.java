@@ -65,5 +65,7 @@ public class EditProfileActivity extends AppCompatActivity {
         }
 
         profile.setProfilePicture(profilePicture.getDrawable());
+
+        profile.setPreferences(this);
     }
 }

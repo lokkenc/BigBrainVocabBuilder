@@ -6,11 +6,11 @@ public class Statistics {
     private int testsTaken;
     private int gamesCompleted;
 
-    public Statistics(int wordsLeft) {
-        wordsLearned = 0;
+    public Statistics(int wordsLearned, int wordsLeft, int testsTaken, int gamesCompleted) {
+        this.wordsLearned = wordsLearned;
         this.wordsLeft = wordsLeft;
-        testsTaken = 0;
-        gamesCompleted = 0;
+        this.testsTaken = testsTaken;
+        this.gamesCompleted = gamesCompleted;
 
     }
 
@@ -44,5 +44,21 @@ public class Statistics {
 
     public void setGamesCompleted(int gamesCompleted) {
         this.gamesCompleted = gamesCompleted;
+    }
+
+    public void addWordsLearned(int wordsLearned) {
+        this.wordsLearned += wordsLearned;
+    }
+
+    public void addWordsLeft(int wordsLeft) {
+        this.wordsLeft += wordsLeft;
+    }
+
+    public void addTestsTaken(int testsTaken) {
+        this.testsTaken += testsTaken;
+    }
+
+    public void addGamesCompleted(int gamesCompleted) {
+        this.gamesCompleted += gamesCompleted;
     }
 }
