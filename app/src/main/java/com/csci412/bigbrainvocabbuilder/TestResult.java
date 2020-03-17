@@ -23,7 +23,7 @@ public class TestResult {
         numCorrect++;
     }
     public void setGrade() {
-        double percent = (numCorrect / testsTaken) * 100;
+        double percent = ((double)numCorrect / (double)testsTaken) * 100;
         if (percent >=90) {
             grade = 'A';
         } else if (percent >= 80) {

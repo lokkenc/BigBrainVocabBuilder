@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gold">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal"
         >
         <TextView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="60dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
+            android:layout_height="80dp"
+            android:layout_margin="30dp"
             android:layout_weight="1"
             android:text="@string/categoryTitle"
             android:textSize="50sp"
@@ -28,17 +26,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal">
         <Button
             android:id="@+id/easyButton"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
+            android:layout_margin="30dp"
             android:layout_weight="1"
             android:text="@string/easy"
             android:background="@color/blueish"
@@ -47,17 +44,16 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal">
         <Button
             android:id="@+id/mediumButton"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
+            android:layout_margin="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
             android:layout_weight="1"
             android:text="@string/medium"
             android:background="@color/blueish"
@@ -66,17 +62,16 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal">
         <Button
             android:id="@+id/hardButton"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
+            android:layout_margin="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
             android:layout_weight="1"
             android:text="@string/hard"
             android:background="@color/blueish"
@@ -85,17 +80,16 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal">
         <ImageButton
             android:id="@+id/difficultButton"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
+            android:layout_margin="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
             android:layout_weight="1"
             android:scaleType="fitCenter"
             android:background="@color/blueish"
@@ -104,17 +98,16 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal">
         <ImageButton
             android:id="@+id/extremeButton"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
+            android:layout_margin="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
             android:layout_weight="1"
             android:background="@color/blueish"
             android:scaleType="fitCenter"

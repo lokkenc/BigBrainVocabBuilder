@@ -28,8 +28,6 @@ public class CatchGame {
     private Rect catcherRect;
 
     private boolean gameOver = false;
-    private Rect backRect;
-    private Point scorePos;
 
     public boolean tryThunk;
 
@@ -39,25 +37,13 @@ public class CatchGame {
         this.width = width;
         catcherRect = new Rect(width/2 - width / 8, height - height / 8,
                 width/2 + width / 8, height - height / 10);
-
-        backRect = new Rect(width/2 - width / 8, height/2 - width / 10,
-                width/2 + width / 8, height/2 + width / 10);
-        scorePos = new Point(width / 2 - width / 10, height/2 - width / 8);
-    }
-
-    public Rect getBackRect() {
-        return backRect;
-    }
-
-    public Point getScorePos() {
-        return scorePos;
     }
 
     // Get words other than the selected main word
     private void getOtherWords(int otherWordCount) {
         otherWords = new String[otherWordCount];
         for (int i = 0; i < otherWordCount; i++) {
-            String[] otherWord = dbManager.getRandomWord();
+            String[] otherWord = dbManager.getRandomWord(-1);
             otherWords[i] = otherWord[0];
             if (otherWords[0].equals(selectWord[0])) {
                 i--;
@@ -67,7 +53,7 @@ public class CatchGame {
 
     // Get a random word to be correct word
     private void getMainWord() {
-        selectWord = dbManager.getRandomWord();
+        selectWord = dbManager.getRandomWord(-1);
     }
 
     // Set words and starting positions
@@ -148,13 +134,9 @@ public class CatchGame {
         }
     }
 
-    // Returns true if user pressed back button rect
-    public boolean backInput(int xPos, int yPos) {
-        if (gameOver && backRect.contains(xPos, yPos)) {
-            Log.i("Catch", "Press Back");
-            return true;
-        }
-        return false;
+    // Returns true if game is over
+    public boolean backInput() {
+        return gameOver;
     }
 
     // Checks word collided with catcher or correct word fell below screen

@@ -8,13 +8,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 
-import com.csci412.bigbrainvocabbuilder.ui.login.LoginActivity;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseManager dbManager = null;
+    public static Profile profile;
     public static int screenVar;
+    public static int learnVar = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         dbManager = new DatabaseManager(this);
         SQLiteDatabase db = dbManager.getWritableDatabase();
+        profile = new Profile(dbManager.getNumberOfWords(), this);
         db.close();
     }
 
@@ -38,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void learn(View v) {
+        learnVar = 1;
+        Intent myIntent = new Intent(this, LearnActivity.class);
+        this.startActivity(myIntent);
+    }
+    public void word(View v) {
+        learnVar = 0;
         Intent myIntent = new Intent(this, LearnActivity.class);
         this.startActivity(myIntent);
     }
@@ -47,15 +55,8 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(myIntent);
     }
     public void stats(View v) {
-        Intent myIntent = new Intent(this, StatsActivity.class);
-        this.startActivity(myIntent);
-    }
-    public void settings(View v) {
-        Intent myIntent = new Intent(this, SettingsActivity.class);
-        this.startActivity(myIntent);
-    }
-    public void login(View v) {
-        Intent myIntent = new Intent(this, LoginActivity.class);
+        profile.setPreferences(this);
+        Intent myIntent = new Intent(this, ProfileActivity.class);
         this.startActivity(myIntent);
     }
 }

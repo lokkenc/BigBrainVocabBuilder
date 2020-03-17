@@ -19,6 +19,9 @@ public class TestActivity extends AppCompatActivity {
     RadioButton choice1;
     RadioButton choice2;
     int correctChoice;
+    private String testWord;
+
+    private DatabaseManager dbManager;
 
     TestLogic tl = null;
     @Override
@@ -30,6 +33,7 @@ public class TestActivity extends AppCompatActivity {
         totalQ = (difficultyFlag * 5) - 1;
         tr.setTestsTaken(totalQ + 1);
         setTestQuestion();
+        dbManager = new DatabaseManager(this);
     }
 
     void setTestQuestion() {
@@ -49,6 +53,7 @@ public class TestActivity extends AppCompatActivity {
         choice2 = (RadioButton)findViewById(R.id.testChoice2);
 
         wordView.setText(content[0]);
+        testWord = content[0];
         choice0.setText(content[ranInt]);
         while(ranInt == newInt1){
             ranInt = random.nextInt(3) + 1;
@@ -84,12 +89,19 @@ public class TestActivity extends AppCompatActivity {
                 }
                 break;
         }
+        if (choiceIsCorrect) {
+            tr.testIsCorrect();
+            dbManager.setWordLearned(testWord);
+        }
         if(totalQ == 0){
+            Statistics stats = MainActivity.profile.getStats();
+            stats.addTestsTaken(tr.getTestsTaken());
+            stats.addWordsLearned(tr.getNumCorrect());
+            MainActivity.profile.setPreferences(this);
             tr.setGrade();
             startActivity(new Intent(TestActivity.this, ResultsActivity.class));
+            this.finish();
         } else {
-            if (choiceIsCorrect)
-                tr.testIsCorrect();
             setTestQuestion();
             totalQ -= 1;
         }

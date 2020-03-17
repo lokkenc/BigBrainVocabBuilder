@@ -198,6 +198,9 @@ public class WordSearchActivity extends AppCompatActivity {
 
     public void checkGameOver() {
         if (wordSearch.checkGameOver()) {
+            Statistics stats = MainActivity.profile.getStats();
+            stats.addGamesCompleted();
+            MainActivity.profile.setPreferences(this);
             setContentView(R.layout.activity_word_search);
         }
     }
@@ -207,7 +210,7 @@ public class WordSearchActivity extends AppCompatActivity {
         ArrayList<String> words = new ArrayList<String>();
         int count = 0;
         while (words.size() < wordCount && count < 1000) {
-            String word = db.getRandomWord()[0];
+            String word = db.getRandomWord(-1)[0];
             if (word.length() < rowCount) {
                 words.add(word);
             }

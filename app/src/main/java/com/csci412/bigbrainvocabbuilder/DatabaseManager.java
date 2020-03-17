@@ -18,23 +18,24 @@ import java.util.Random;
 public class DatabaseManager extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "vocabDB";
-    private static final int DATABSE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String TABLE_VOCAB = "vocab";
     private static final String ID = "id";
     private static final String WORD = "word";
     private static final String DEFINITION = "definition";
+    private static final String LEARNED = "learned";
 
     private Context thisContext = null;
 
     public DatabaseManager(Context context) {
-        super (context, DATABASE_NAME, null, DATABSE_VERSION);
+        super (context, DATABASE_NAME, null, DATABASE_VERSION);
         thisContext = context;
     }
 
     public void onCreate(SQLiteDatabase db) {
         String sqlCreate = "create table " + TABLE_VOCAB + "(" + ID;
         sqlCreate += " integer primary key autoincrement, " + WORD;
-        sqlCreate += " text, " + DEFINITION + " text )";
+        sqlCreate += " text, " + DEFINITION + " text, " + LEARNED + " integer)";
         db.execSQL(sqlCreate);
         if (thisContext != null) {
             // Only load JSON on first creation of db
@@ -45,6 +46,19 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists " + TABLE_VOCAB);
         onCreate(db);
+    }
+
+    public int getNumberOfWords() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sqlQuery = "SELECT COUNT(*) FROM " + TABLE_VOCAB;
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+        if (!(cursor.moveToFirst())) {
+            return 0;
+        }
+
+        int wordCount = cursor.getInt(0);
+        db.close();
+        return wordCount;
     }
 
     // Loads in the JSON dictionary vocab from assets folder to database
@@ -69,7 +83,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 JSONObject jsonWord = json.getJSONObject(i);
                 String word = jsonWord.getString("word");
                 String def = jsonWord.getString("definition");
-                SQLiteStatement insert = db.compileStatement("insert into " + TABLE_VOCAB + " values(null, ?, ?)");
+                SQLiteStatement insert = db.compileStatement("insert into " + TABLE_VOCAB + " values(null, ?, ?, 0)");
                 insert.bindString(1, word);
                 insert.bindString(2, def);
                 insert.executeInsert();
@@ -84,19 +98,31 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     // Retrieves a random word from the database
     // Returns a pair of strings containing (word, definition)
-    public String[] getRandomWord() {
+    public String[] getRandomWord(int learned) {
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlQuery = "SELECT COUNT(*) FROM " + TABLE_VOCAB;
+        if (learned == 1) {
+            sqlQuery += " WHERE " + LEARNED + " = 1";
+        } else if (learned == 0){
+            sqlQuery += " WHERE " + LEARNED + " = 0";
+        }
         Cursor cursor = db.rawQuery(sqlQuery, null);
         if (!(cursor.moveToFirst()))
             return new String[]{"OOF", "DED"};
         int wordCount = cursor.getInt(0);
+        if (wordCount <= 0) {
+            return new String[]{"EXTRAOOF", "MEGADED"};
+        }
         Random rand = new Random();
-        int randomWordIndex = rand.nextInt(wordCount);
+        int randomWordIndex = rand.nextInt(wordCount-1);
         sqlQuery = "select * from " + TABLE_VOCAB;
-        sqlQuery += " where " + ID + " = " + randomWordIndex;
+        if (learned == 1) {
+            sqlQuery += " WHERE " + LEARNED + " = 1";
+        } else if (learned == 0){
+            sqlQuery += " WHERE " + LEARNED + " = 0";
+        }
         cursor = db.rawQuery(sqlQuery, null);
-        if (!(cursor.moveToFirst()))
+        if (!(cursor.moveToPosition(randomWordIndex)))
             return new String[]{"BIGOOF", "DEDDER"};
         String[] wordDef = new String[2];
         wordDef[0] = cursor.getString(1);
@@ -106,6 +132,19 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         return wordDef;
 
+    }
+
+    public boolean setWordLearned(String word) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String updateStatement = "UPDATE " + TABLE_VOCAB;
+        updateStatement += " SET " + LEARNED + " = 1 ";
+        updateStatement += "WHERE " + WORD + " = '" + word + "'" ;
+        try {
+            db.execSQL(updateStatement);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }
