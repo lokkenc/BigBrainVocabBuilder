@@ -28,7 +28,8 @@
     </TableRow>
     <TableRow
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp">
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="150dp"
@@ -54,7 +55,8 @@
     </TableRow>
     <TableRow
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp">
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="150dp"
@@ -79,28 +81,6 @@
             android:onClick="stats" />
     </TableRow>
 
-    <TableRow
-        android:paddingTop="25dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:id="@+id/LoginButton"
-            android:text="@string/login_button_text"
-            android:onClick="login" />
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:id="@+id/SettingsButton"
-            android:text="@string/settings_button_text"
-            android:onClick="settings" />
-    </TableRow>
 
 </TableLayout>
 

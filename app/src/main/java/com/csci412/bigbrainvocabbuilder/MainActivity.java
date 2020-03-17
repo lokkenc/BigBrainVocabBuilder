@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 
-import com.csci412.bigbrainvocabbuilder.ui.login.LoginActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -58,14 +57,6 @@ public class MainActivity extends AppCompatActivity {
     public void stats(View v) {
         profile.setPreferences(this);
         Intent myIntent = new Intent(this, ProfileActivity.class);
-        this.startActivity(myIntent);
-    }
-    public void settings(View v) {
-        Intent myIntent = new Intent(this, SettingsActivity.class);
-        this.startActivity(myIntent);
-    }
-    public void login(View v) {
-        Intent myIntent = new Intent(this, LoginActivity.class);
         this.startActivity(myIntent);
     }
 }
