@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         dbManager = new DatabaseManager(this);
         SQLiteDatabase db = dbManager.getWritableDatabase();
-        profile = new Profile(dbManager.getNumberOfWords(), this.getResources().getDrawable(R.drawable.base_profile_pic), this);
+        profile = new Profile(dbManager.getNumberOfWords(), this);
         db.close();
     }
 

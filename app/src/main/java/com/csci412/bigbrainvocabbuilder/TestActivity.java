@@ -94,8 +94,13 @@ public class TestActivity extends AppCompatActivity {
             dbManager.setWordLearned(testWord);
         }
         if(totalQ == 0){
+            Statistics stats = MainActivity.profile.getStats();
+            stats.addTestsTaken(tr.getTestsTaken());
+            stats.addWordsLearned(tr.getNumCorrect());
+            MainActivity.profile.setPreferences(this);
             tr.setGrade();
             startActivity(new Intent(TestActivity.this, ResultsActivity.class));
+            this.finish();
         } else {
             setTestQuestion();
             totalQ -= 1;

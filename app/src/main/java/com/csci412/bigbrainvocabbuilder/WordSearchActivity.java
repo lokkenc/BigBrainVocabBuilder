@@ -198,6 +198,9 @@ public class WordSearchActivity extends AppCompatActivity {
 
     public void checkGameOver() {
         if (wordSearch.checkGameOver()) {
+            Statistics stats = MainActivity.profile.getStats();
+            stats.addGamesCompleted();
+            MainActivity.profile.setPreferences(this);
             setContentView(R.layout.activity_word_search);
         }
     }

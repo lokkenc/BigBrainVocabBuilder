@@ -20,7 +20,6 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
         setResults();
-        btnClick();
     }
 
     public void setResults() {
@@ -33,15 +32,7 @@ public class ResultsActivity extends AppCompatActivity {
         testsTaken.setText("" + tr.getTestsTaken());
     }
 
-    public void btnClick() {
-        button = (Button) findViewById(R.id.goBack);
-        button.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(ResultsActivity.this,MainActivity.class);
-                startActivity(intent);
-            }
-        });
+    public void goBack(View v) {
+        this.finish();
     }
 }

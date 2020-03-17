@@ -6,21 +6,42 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.SystemClock;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Date;
 
 public class EditProfileActivity extends AppCompatActivity {
 
     private static final int PHOTO_REQUEST = 1;
     private ImageView imageView;
     private Bitmap bitmap;
+    private File file;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+        updateView();
+    }
+
+    public void updateView() {
+        ImageView profilePic = findViewById(R.id.profile_picture2);
+        Bitmap map = MainActivity.profile.getProfilePicture();
+        if (map == null) {
+            profilePic.setImageResource(R.drawable.base_profile_pic);
+        } else {
+            profilePic.setImageBitmap(MainActivity.profile.getProfilePicture());
+        }
+
     }
 
     public void goBack(View v) {
@@ -47,6 +68,7 @@ public class EditProfileActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             bitmap = (Bitmap) extras.get("data");
             imageView.setImageBitmap(bitmap);
+            savePicture();
         }
     }
 
@@ -64,8 +86,50 @@ public class EditProfileActivity extends AppCompatActivity {
             profile.setLastName(lastNameET.getText().toString());
         }
 
-        profile.setProfilePicture(profilePicture.getDrawable());
+        if (file != null && file.exists()) {
+            profile.setImagePath(file.getAbsolutePath());
+        }
+
 
         profile.setPreferences(this);
+    }
+
+    public File writeToExternalStorage(Bitmap bitmap) throws IOException {
+        String storageState = Environment.getExternalStorageState();
+        File file = null;
+
+        if (storageState.equals(Environment.MEDIA_MOUNTED)) {
+            File dir = this.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
+            Date dateToday = new Date();
+            long ms = SystemClock.elapsedRealtime();
+            String filename = "/" + dateToday + "_" + ms + ".png";
+
+            file = new File(dir + filename);
+            long freeSpace = dir.getFreeSpace();
+            int bytesNeeded = bitmap.getByteCount();
+            if (bytesNeeded * 1.5 < freeSpace) {
+                FileOutputStream fos = new FileOutputStream(file);
+
+                boolean result = bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+                fos.close();
+                if (result)
+                    return file;
+                else
+                    throw new IOException("Problem compressing the Bitmap to the output stream");
+
+            }
+        }
+        return file;
+
+    }
+
+    public void savePicture() {
+        try {
+            file = writeToExternalStorage(bitmap);
+            Toast.makeText(this, "Picture saved", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 }

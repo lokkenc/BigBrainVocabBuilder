@@ -48,17 +48,15 @@ public class Statistics {
 
     public void addWordsLearned(int wordsLearned) {
         this.wordsLearned += wordsLearned;
+        this.wordsLeft -= wordsLearned;
     }
 
-    public void addWordsLeft(int wordsLeft) {
-        this.wordsLeft += wordsLeft;
-    }
 
     public void addTestsTaken(int testsTaken) {
         this.testsTaken += testsTaken;
     }
 
-    public void addGamesCompleted(int gamesCompleted) {
-        this.gamesCompleted += gamesCompleted;
+    public void addGamesCompleted() {
+        this.gamesCompleted++;
     }
 }

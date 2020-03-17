@@ -2,6 +2,7 @@ package com.csci412.bigbrainvocabbuilder;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -67,7 +68,12 @@ public class ProfileActivity extends AppCompatActivity {
         TextView testsTaken = findViewById(R.id.tests_taken);
         TextView gamesCompleted = findViewById(R.id.games_completed);
 
-        profilePicture.setImageDrawable(profile.getProfilePicture());
+        Bitmap bitmap = profile.getProfilePicture();
+        if (bitmap == null) {
+            profilePicture.setImageResource(R.drawable.base_profile_pic);
+        } else {
+            profilePicture.setImageBitmap(bitmap);
+        }
         firstName.setText(profile.getFirstName());
         lastName.setText(profile.getLastName());
         wordsLearned.setText("" + stats.getWordsLearned());
