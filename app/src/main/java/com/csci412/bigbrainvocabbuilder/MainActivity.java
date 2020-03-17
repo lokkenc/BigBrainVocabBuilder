@@ -14,6 +14,7 @@ import com.csci412.bigbrainvocabbuilder.ui.login.LoginActivity;
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseManager dbManager = null;
+    public static Profile profile;
     public static int screenVar;
 
     @Override
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         dbManager = new DatabaseManager(this);
         SQLiteDatabase db = dbManager.getWritableDatabase();
+        profile = new Profile(dbManager.getNumberOfWords(), this);
         db.close();
     }
 
@@ -47,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(myIntent);
     }
     public void stats(View v) {
-        Intent myIntent = new Intent(this, StatsActivity.class);
+        profile.setPreferences(this);
+        Intent myIntent = new Intent(this, ProfileActivity.class);
         this.startActivity(myIntent);
     }
     public void settings(View v) {
