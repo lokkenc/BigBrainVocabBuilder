@@ -34,23 +34,10 @@
         android:textColor="@color/gold"
         android:text="Definition of the word, wow its so cool!" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:id="@+id/learnExample"
-        android:textSize="20sp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:padding="10dp"
-        android:background="@color/blueish"
-        android:textColor="@color/gold"
-        android:text="Example usage of word in sentence" />
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:background="@color/blueish"

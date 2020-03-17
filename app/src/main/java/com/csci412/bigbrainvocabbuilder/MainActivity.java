@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseManager dbManager = null;
     public static Profile profile;
     public static int screenVar;
+    public static int learnVar = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +41,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void learn(View v) {
+        learnVar = 1;
         Intent myIntent = new Intent(this, LearnActivity.class);
         this.startActivity(myIntent);
     }
     public void word(View v) {
-        Intent myIntent = new Intent(this, WordActivity.class);
+        learnVar = 0;
+        Intent myIntent = new Intent(this, LearnActivity.class);
         this.startActivity(myIntent);
     }
     public void test(View v) {
