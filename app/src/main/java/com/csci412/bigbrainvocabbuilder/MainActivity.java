@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, LearnActivity.class);
         this.startActivity(myIntent);
     }
+    public void word(View v) {
+        Intent myIntent = new Intent(this, WordActivity.class);
+        this.startActivity(myIntent);
+    }
     public void test(View v) {
         screenVar = 1;
         Intent myIntent = new Intent(this, CategoriesActivity.class);
