@@ -13,7 +13,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="100dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="15dp"
         android:textColor="@color/blueish"
         android:text="@string/first_name_label"
         android:textSize="24sp"/>
@@ -24,7 +24,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/first_name_label"
         app:layout_constraintLeft_toRightOf="@id/first_name_label"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:textSize="24sp"
         android:hint="Enter First Name" />
 
@@ -35,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@id/first_name_label"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="50dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="15dp"
         android:text="@string/last_name_label"
         android:textColor="@color/blueish"
         android:textSize="24sp"/>
@@ -47,7 +48,8 @@
         app:layout_constraintTop_toTopOf="@id/last_name_label"
         app:layout_constraintLeft_toRightOf="@id/last_name_label"
         android:textSize="24sp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:hint="Enter Last Name" />
 
     <ImageView
@@ -68,7 +70,7 @@
         android:onClick="takePicture"
         app:layout_constraintTop_toTopOf="@id/profile_picture2"
         app:layout_constraintLeft_toRightOf="@id/profile_picture2"
-        android:layout_margin="50dp"
+        android:layout_margin="30dp"
         android:textColor="@color/blueish"
         android:text="@string/pp_change_label" />
 
