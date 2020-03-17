@@ -49,7 +49,7 @@ public class CatchGameActivity extends AppCompatActivity {
 
     public boolean onTouchEvent(MotionEvent ev) {
         game.moveInput((int)ev.getX());
-        if (game.backInput((int)ev.getX(),(int)ev.getY() - statusBarHeight)) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN && game.backInput()) {
             goBack();
         }
         return true;
