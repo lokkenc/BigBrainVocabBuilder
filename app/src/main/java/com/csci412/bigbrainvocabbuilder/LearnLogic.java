@@ -11,7 +11,7 @@ public class LearnLogic {
     }
 
     public String[] createLearnDef() {
-        String[] mainWordDef = dbManager.getRandomWord();
+        String[] mainWordDef = dbManager.getRandomWord(1);
         return mainWordDef;
     }
 }

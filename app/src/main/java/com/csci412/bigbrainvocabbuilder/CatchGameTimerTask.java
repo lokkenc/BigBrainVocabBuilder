@@ -14,10 +14,15 @@ class CatchGameTimerTask extends TimerTask {
 
     public void run() {
         // Run game updates and refresh screen
+        ((CatchGameActivity) gameView.getContext()).tryPlayMusic();
         if (!game.isGameOver()) {
             game.moveCatcher();
             game.moveWordsDown();
             game.checkHit();
+            if (game.tryThunk) {
+                ((CatchGameActivity) gameView.getContext()).playThunkSound();
+                game.tryThunk = false;
+            }
         }
         gameView.postInvalidate();
     }
