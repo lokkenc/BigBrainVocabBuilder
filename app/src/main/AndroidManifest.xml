@@ -24,6 +24,7 @@
                 android:value="com.csci412.bigbrainvocabbuilder.MainActivity" />
         </activity>
         <activity android:name=".LearnActivity" />
+        <activity android:name=".WordActivity" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"

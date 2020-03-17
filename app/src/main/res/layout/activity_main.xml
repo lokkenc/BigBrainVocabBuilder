@@ -23,7 +23,8 @@
             android:src="@drawable/review"
             android:scaleType="fitCenter"
             android:background="@color/blueish"
-            android:layout_margin="10dp" />
+            android:layout_margin="10dp"
+            android:onClick="learn" />
     </TableRow>
     <TableRow
         android:layout_width="match_parent"
@@ -38,7 +39,7 @@
             android:background="@color/blueish"
             android:padding="10dp"
             android:layout_margin="10dp"
-            android:onClick="learn" />
+            android:onClick="word"/>
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="150dp"
