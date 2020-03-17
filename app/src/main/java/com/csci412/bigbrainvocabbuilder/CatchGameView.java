@@ -64,16 +64,13 @@ public class CatchGameView extends View {
         shapePaint.setColor(getResources().getColor(R.color.blueish));
         if (game.isGameOver()) {
             // Draw the end screen with user score and back button
-            Rect backRect = game.getBackRect();
-            Point scorePos = game.getScorePos();
             int score = game.getScore();
-            canvas.drawRect(backRect, shapePaint);
-            setTextSize("Back", textPaint, (int)(backRect.width() * 0.9f));
-            textPaint.setColor(getResources().getColor(R.color.gold));
-            canvas.drawText("Back", backRect.centerX(), backRect.centerY(), textPaint);
 
             setTextSize(String.valueOf(score), defPaint, width / 10);
-            canvas.drawText("Score: " + score, scorePos.x, scorePos.y, defPaint);
+            canvas.drawText("Score: " + score, width / 2 - width / 10, height/2 - width / 8, defPaint);
+
+            setTextSize("Tap anywhere to continue", defPaint, width / 2);
+            canvas.drawText("Tap anywhere to continue", width / 2 - width / 4, height/2, defPaint);
         } else {
             // Draw the game, with position of each word, the catcher, and definition
             String[] words = game.getWords();
